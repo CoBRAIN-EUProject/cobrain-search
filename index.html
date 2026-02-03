@@ -97,7 +97,14 @@ button:hover {
   </header>
   <!--End of header-->
   <h2>CoBRAIN Alloys — Interactive Scatter with Filters</h2>
-  <div id="elementCombos" style="margin:10px 0; font-size:14px;"></div>
+  <div id="elementCombosContainer" style="margin:10px 0;">
+  <label for="familyDropdown" style="font-weight:bold;">
+    Distinct 5-element groups (families):
+  </label>
+  <select id="familyDropdown">
+    <option value="">— click to view families —</option>
+  </select>
+</div>
 
   <div id="controls">
     <label>
@@ -400,9 +407,15 @@ async function loadAndPlot(){
     return els.join('-');
   });
 
-  comboDiv.innerHTML =
-    `<b>Distinct 5-element groups (families):</b> (${families.length})<br>` +
-    prettyFamilies.join('<br>');
+  const dropdown = document.getElementById('familyDropdown');
+dropdown.innerHTML = `<option value="">— ${families.length} families detected —</option>`;
+ 
+prettyFamilies.forEach(fam => {
+  const opt = document.createElement('option');
+  opt.value = fam;
+  opt.textContent = fam;
+  dropdown.appendChild(opt);
+});
 
   allRecords = records;
   setupSliders();
