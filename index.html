@@ -137,7 +137,7 @@
           <option value="">— none selected —</option>
         </select>
       </label>
-      <button id="openDatasheetBtn" type="button" disabled>
+      <button id="openDatasheetBtn" type="button" onclick="location.href='datasheet.html'">
         Open datasheet
       </button>
       <span id="selectedAlloyLabel" style="font-size:14px; color:#555;"></span>
@@ -232,9 +232,22 @@ let allPhases = [];
 
 /* === Load data and initialise === */
 async function loadAndPlot(){
-  const file = 'https://alvise-b.github.io/CoBRAIN_alloys/CoBrain_alloys.json';
-  const resp = await fetch(file);
-  const data = await resp.json();
+  const files = [
+    'part_1.json',
+    'part_2.json',
+    'part_3.json',
+    'part_4.json',
+    'part_5.json',
+    'part_6.json'
+  ];
+
+  let data = {};
+
+  for (const file of files) {
+    const resp = await fetch(file);
+    const chunk = await resp.json();
+    data = { ...data, ...chunk };
+  }
 
   const records = [];
 
