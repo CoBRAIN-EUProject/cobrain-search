@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>CoBrain Alloys — Interactive Chart with Filters & Details</title>
+  <title>CoBRAIN Alloys — Interactive Chart with Filters & Details</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
@@ -69,7 +69,7 @@
   </style>
 </head>
 <body>
-  <h2>CoBrain Alloys — Interactive Scatter with Filters</h2>
+  <h2>CoBRAIN Alloys — Interactive Scatter with Filters</h2>
   <div id="elementCombos" style="margin:10px 0; font-size:14px;"></div>
 
   <div id="controls">
@@ -232,7 +232,7 @@ let allPhases = [];
 
 /* === Load data and initialise === */
 async function loadAndPlot(){
-  const file = 'CoBrain_alloys.json';
+  const file = 'https://alvise-b.github.io/CoBRAIN_alloys/CoBrain_alloys.json';
   const resp = await fetch(file);
   const data = await resp.json();
 
