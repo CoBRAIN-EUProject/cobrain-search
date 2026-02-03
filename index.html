@@ -407,7 +407,8 @@ async function loadAndPlot(){
     return els.join('-');
   });
 
-  const dropdown = document.getElementById('familyDropdown');
+  const dropdown = document.getElementById('familyDropdown').onchange = function () {
+  this.selectedIndex = 0;};
 dropdown.innerHTML = `<option value="">— ${families.length} families detected —</option>`;
  
 prettyFamilies.forEach(fam => {
