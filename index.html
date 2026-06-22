@@ -517,10 +517,17 @@ function drawPlot() {
     });
   }
 
+  const axisLabels = {
+    Hardness:         'Hardness - HV',
+    PittingPotential: 'Pitting Potential - mV',
+    SFE:              'Stacking Fault Energy - mJ/m²',
+    WearRate:         'Wear Rate - mm³/Nm',
+    Density:          'Density - kg/L'
+  };
   const layout = {
     title: `Alloys (${filtered.length} shown)`,
-    xaxis: { title: xSel },
-    yaxis: { title: ySel },
+    xaxis: { title: axisLabels[xSel] || xSel },
+    yaxis: { title: axisLabels[ySel] || ySel },
     legend: { orientation: 'h', x: 0, y: -0.2 },
     hovermode: 'closest'
   };
